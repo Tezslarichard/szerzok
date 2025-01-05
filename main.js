@@ -57,34 +57,32 @@ th3.colSpan = 2 // Az utolsó fejléc cella két cellát von össze
 th3.innerHTML = array[0].th3ertek //megadjuk a fejléc tartalmát a tömbböl
 th_row.appendChild(th3)
 
-for (let i = 1; i < array.length; i++) {
+
+for (const futo of array) {
     const table_row = document.createElement('tr') // Létrehozzuk az új sort
     tbody.appendChild(table_row) // Hozzáadjuk a sort a tbody-hoz
 
-    const td1 = document.createElement('td') // létrehozunk egy sort
-    td1.innerHTML = array[i].Szerzo  //megadjuk mit tartalmaz
+    const td1 = document.createElement('td') // létrehozunk egy cellát
+    td1.innerHTML = futo.Szerzo  //megadjuk mit tartalmaz
     table_row.appendChild(td1) //hozzáadjuk a sorhoz
 
-    const td2 = document.createElement('td') // létrehozunk egy sort
-    td2.innerHTML = array[i].csapat  //megadjuk mit tartalmaz
+    const td2 = document.createElement('td') // létrehozunk egy cellát
+    td2.innerHTML = futo.csapat  //megadjuk mit tartalmaz
     table_row.appendChild(td2)//hozzáadjuk a sorhoz
 
-    const td3 = document.createElement('td')// létrehozunk egy sort
-    td3.innerHTML = array[i].Muvei  //megadjuk mit tartalmaz
+    const td3 = document.createElement('td')// létrehozunk egy cellát
+    td3.innerHTML = futo.Muvei  //megadjuk mit tartalmaz
     table_row.appendChild(td3)//hozzáadjuk a sorhoz
 
-    let td4;
-    if (array[i].muvei2) {      td4 = document.createElement('td')// létrehozunk egy sort
-        td4.innerHTML = array[i].muvei2//megadjuk mit tartalmaz
-        table_row.appendChild(td4) //hozzáadjuk a sorhoz
-    }
-
-   
-    if (td4 === undefined) {
-        td3.colSpan = "2" // Ha nincs td4, akkor a td3 összevonja a két cellát
+    
+    if (futo.muvei2) { //ha van td4 akkor  létrehozunk egy cellát,megadjuk mit tartalmaz majd hozzáadjuk a sorhoz
+        td4 = document.createElement('td')
+        td4.innerHTML = futo.muvei2
+        table_row.appendChild(td4) 
+    
     } else {
-        // Ha van td4, akkor hozzáadjuk a sorhoz
-        table_row.appendChild(td4)
+        // Ha nincs td4 akkor összevonom a cellát
+       td3.colSpan = "2"
     }
 
 
