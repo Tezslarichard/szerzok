@@ -5,15 +5,15 @@ document.body.appendChild(table) // table elemet hozzá adjuk a htmlhez
 table.appendChild(thead) // a thead elemet a table elemhez füzőm
 table.appendChild(tbody) // tbody elemet a tablehöz fűzöm
 
-
-
-const array =[          //Tömbben eltárolom az adatokat
-    {    //tömb 0 eleme                       
+  const array1 =[  {    //tömb 0 eleme                       
         
         th1ertek : "Szerző neve",
         th2ertek : "Csapat",
         th3ertek : "Művei"
-    },
+    }]
+
+const array =[          //Tömbben eltárolom az adatokat
+    
     {    //tömb első eleme
         Szerzo : "Vörösmarty Mihály",
         csapat : "romantikus triász",
@@ -45,16 +45,16 @@ thead.appendChild(th_row) // A fejléc sort hozzáadjuk a thead-hez
 
 // Fejléc cellák létrehozása és hozzáadása a fejléchez
 const th1 = document.createElement('th')
-th1.innerHTML = array[0].th1ertek //megadjuk a fejléc tartalmát a tömbböl
+th1.innerHTML = array1[0].th1ertek //megadjuk a fejléc tartalmát a tömbböl
 th_row.appendChild(th1)
 
 const th2 = document.createElement('th')
-th2.innerHTML = array[0].th2ertek //megadjuk a fejléc tartalmát a tömbböl
+th2.innerHTML = array1[0].th2ertek //megadjuk a fejléc tartalmát a tömbböl
 th_row.appendChild(th2)
 
 const th3 = document.createElement('th')
 th3.colSpan = 2 // Az utolsó fejléc cella két cellát von össze
-th3.innerHTML = array[0].th3ertek //megadjuk a fejléc tartalmát a tömbböl
+th3.innerHTML = array1[0].th3ertek //megadjuk a fejléc tartalmát a tömbböl
 th_row.appendChild(th3)
 
 
