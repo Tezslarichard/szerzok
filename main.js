@@ -58,7 +58,9 @@ th3.innerHTML = array1[0].th3ertek //megadjuk a fejléc tartalmát a tömbböl
 th_row.appendChild(th3)
 
 function rendetrable(){  //függvény bevezetése, nincs parametere
+    tbody.innerHTML="" //ne duplikáljuk a táblázatot
     for (const futo of array) {
+        
         const table_row = document.createElement('tr') // Létrehozzuk az új sort
         tbody.appendChild(table_row) // Hozzáadjuk a sort a tbody-hoz
 
@@ -89,3 +91,36 @@ function rendetrable(){  //függvény bevezetése, nincs parametere
     }
 }
 rendetrable() // meghivom a fuggvenyemet
+
+
+
+const form = document.getElementById('form'); //letrehozok egy formot es annak elkerem azt a htmlelemntjét ami form id-val rendelkezik
+
+form.addEventListener('submit',function(e){ //submitra irok egy eseménykezelőt
+    e.preventDefault();
+    //elkérjük az adatokat a táblázatnak
+    const Szerzo_nev = document.getElementById('szerzo_nev')
+    const csapat_nev = document.getElementById('group')
+    const muelem = document.getElementById('mu1')
+    const masodik = document.getElementById('mu2')
+    
+
+    // az adatok értékeit elkérem
+    const Szerzo_nev_value = Szerzo_nev.value
+    const csapat_nev_value = csapat_nev.value
+    const muelem_value = muelem.value
+    const masodik_value = masodik.value
+    
+
+    //új objektumot létrehozok az adatoknak
+    const new_array = {
+        Szerzo : Szerzo_nev_value,
+        csapat : csapat_nev_value,
+        Muvei : muelem_value,
+        muvei2: masodik_value,
+    }
+    array.push(new_array) // hozzáadjuk az új objektumot a meglévő tömbhöz
+    rendetrable()//frissitjük a táblázatot az új adatokkal
+
+
+})
