@@ -78,7 +78,7 @@ function rendetrable(){  //függvény bevezetése, nincs parametere
 
 
         if (futo.muvei2) { //ha van td4 akkor  létrehozunk egy cellát,megadjuk mit tartalmaz majd hozzáadjuk a sorhoz
-            td4 = document.createElement('td')
+            td4 = document.createElement('td') // 
             td4.innerHTML = futo.muvei2
             table_row.appendChild(td4) 
         
@@ -99,58 +99,55 @@ const form = document.getElementById('form'); //letrehozok egy formot es annak e
 form.addEventListener('submit',function(e){ //submitra irok egy eseménykezelőt
     e.preventDefault();
     //elkérjük az adatokat a táblázatnak
-    const Szerzo_nev = document.getElementById('szerzo_nev')
-    const csapat_nev = document.getElementById('group')
-    const muelem = document.getElementById('mu1')
-    const masodik = document.getElementById('mu2')
+    const Szerzo_nev = document.getElementById('szerzo_nev') //szerzo_nevet elkerjuk id alapjan
+    const csapat_nev = document.getElementById('group') // csapatot elkérjük a group id alapján
+    const muelem = document.getElementById('mu1') // muelemet elkérjük a mu1 id alapjan
+    const masodik = document.getElementById('mu2') // mu2-t is elkérem a mu2 id alapjan
 
-    const  tform = e.currentTarget
-    const hiba = tform.querySelectorAll('.error')
-    for(const errorElement of hiba){
-        errorElement.innerHTML = ""
-    }
+
     
-    let valid = true
-    if(validatefields(Szerzo_nev, "A szerző neve kötelező")){
+    let valid = true // validáció alap értéke
+    if(!validatefields(Szerzo_nev, "A szerző neve kötelező")){//validáljuk a szerző neve mezőt
         valid = false;
     }
 
-    if(validatefields(csapat_nev, "A csapatot kötelező megadni")){
+    if(!validatefields(csapat_nev, "A csapatot kötelező megadni")){//validáljuk a csapat neve  mezőt
         valid = false;
     }
-    if(validatefields(muelem, "A műnek a  neve kötelező")){
+    if(!validatefields(muelem, "A műnek a  neve kötelező")){ //validáljuk a a mű  mezőt
         valid = false;
     }
 
-    if(valid){
+    if(valid){ // ha minden mező validálva van, elkérjük az értékét
     // az adatok értékeit elkérem
     const Szerzo_nev_value = Szerzo_nev.value
     const csapat_nev_value = csapat_nev.value
     const muelem_value = muelem.value
     const masodik_value = masodik.value
+
     //új objektumot létrehozok az adatoknak
-    const new_array = {
+    const ujobjektum = {
         Szerzo : Szerzo_nev_value,
         csapat : csapat_nev_value,
         Muvei : muelem_value,
         muvei2: masodik_value,
     }
 
-    array.push(new_array) // hozzáadjuk az új objektumot a meglévő tömbhöz
+    array.push(ujobjektum) // hozzáadjuk az új objektumot a meglévő tömbhöz
     rendetrable()//frissitjük a táblázatot az új adatokkal
     
 }})
 
-function validatefields(inputhtmlElement, errormessage){
-    let valid = true
+function validatefields(inputhtmlElement, errormessage){ // csinálunk egy függvényt
+    let valid = true // definiáljuk a valid értékét
 
-    if(inputhtmlElement.value === ''){
-        const parentElement = inputhtmlElement.parentElement;
-        const errorhely = parentElement.querySelector('.error');
-        if(errorhely != undefined){
-            errorhely.innerHTML = errormessage;
+    if(inputhtmlElement.value === ''){//ha az érték üres akkor
+        const parentElement = inputhtmlElement.parentElement; //eltároljuk egy változoba
+        const errorhely = parentElement.querySelector('.error'); // megkeressuk azt az első elmet, amin rajta van az error class
+        if(errorhely != undefined){ // ha talalunk ilyet mezot 
+            errorhely.innerHTML = errormessage; // akkor beleirjuk a hibauzenetet
         }
-        valid = false;
+        valid = false; //valid valtozo értéke ujra hamis
     }
-    return valid;
+    return valid; // visszaterek a valid valtozoval, ami akkor hamis ha nem ment at a validacion
 }
