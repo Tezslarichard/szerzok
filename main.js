@@ -104,27 +104,12 @@ form.addEventListener('submit',function(e){ //submitra irok egy eseménykezelőt
     const muelem = document.getElementById('mu1') // muelemet elkérjük a mu1 id alapjan
     const masodik = document.getElementById('mu2') // mu2-t is elkérem a mu2 id alapjan
 
-
-    
-    let valid = true // validáció alap értéke
-    if(!validatefields(Szerzo_nev, "A szerző neve kötelező")){//validáljuk a szerző neve mezőt
-        valid = false;
-    }
-
-    if(!validatefields(csapat_nev, "A csapatot kötelező megadni")){//validáljuk a csapat neve  mezőt
-        valid = false;
-    }
-    if(!validatefields(muelem, "A műnek a  neve kötelező")){ //validáljuk a a mű  mezőt
-        valid = false;
-    }
-
-    if(valid){ // ha minden mező validálva van, elkérjük az értékét
-    // az adatok értékeit elkérem
+    if(simplevalidacio(Szerzo_nev, csapat_nev,muelem,masodik)){ // ha minden mező megvan adva akkor
+    // akkor eltároljuk az értékeket egy valtozoba
     const Szerzo_nev_value = Szerzo_nev.value
     const csapat_nev_value = csapat_nev.value
     const muelem_value = muelem.value
     const masodik_value = masodik.value
-
     //új objektumot létrehozok az adatoknak
     const ujobjektum = {
         Szerzo : Szerzo_nev_value,
@@ -137,6 +122,21 @@ form.addEventListener('submit',function(e){ //submitra irok egy eseménykezelőt
     rendetrable()//frissitjük a táblázatot az új adatokkal
     
 }})
+
+function simplevalidacio(szerzo_input,csapatnev_input,muelem_input){
+    let valid = true // validáció alap értéke
+    if(!validatefields(szerzo_input, "A szerző neve kötelező")){//validáljuk a szerző neve mezőt, ha hamisan tér vissza akkor
+        valid = false; // a valid változo értékét hamisra allitjuk
+    }
+
+    if(!validatefields(csapatnev_input, "A csapatot kötelező megadni")){//validáljuk a csapat neve  mezőt, ha hamissal tér vissza
+        valid = false; // valid valtozo erteke hamissa allitjuk
+    }
+    if(!validatefields(muelem_input, "A műnek a  neve kötelező")){ //validáljuk a a mű  mezőt, ha hamissal ter vissza
+        valid = false; // valid valtozo erteket hamisra allitjuk
+    }
+    return valid; // visszaterek a valid valtozo ertekevel
+}
 
 function validatefields(inputhtmlElement, errormessage){ // csinálunk egy függvényt
     let valid = true // definiáljuk a valid értékét
