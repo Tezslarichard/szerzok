@@ -104,6 +104,11 @@ form.addEventListener('submit',function(e){ //submitra irok egy eseménykezelőt
     const muelem = document.getElementById('mu1') // muelemet elkérjük a mu1 id alapjan
     const masodik = document.getElementById('mu2') // mu2-t is elkérem a mu2 id alapjan
 
+    const  tform = e.currentTarget
+    const hiba = tform.querySelectorAll('.error')
+    for(const errorElement of hiba){
+        errorElement.innerHTML = ""
+    }
     if(simplevalidacio(Szerzo_nev, csapat_nev,muelem,masodik)){ // ha minden mező megvan adva akkor
     // akkor eltároljuk az értékeket egy valtozoba
     const Szerzo_nev_value = Szerzo_nev.value
