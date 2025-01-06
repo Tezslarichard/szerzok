@@ -111,38 +111,23 @@ form.addEventListener('submit',function(e){ //submitra irok egy eseménykezelőt
     }
     
     let valid = true
+    if(validatefields(Szerzo_nev, "A szerző neve kötelező")){
+        valid = false;
+    }
+
+    if(validatefields(csapat_nev, "A csapatot kötelező megadni")){
+        valid = false;
+    }
+    if(validatefields(muelem, "A műnek a  neve kötelező")){
+        valid = false;
+    }
+
+    if(valid){
     // az adatok értékeit elkérem
     const Szerzo_nev_value = Szerzo_nev.value
     const csapat_nev_value = csapat_nev.value
     const muelem_value = muelem.value
     const masodik_value = masodik.value
-
-    if(Szerzo_nev_value === ''){
-        const parentElement = Szerzo_nev.parentElement;
-        const errorplace = parentElement.querySelector('.error')
-        if(errorplace != undefined){
-            errorplace.innerHTML = ' A szerző neve kötelező'
-        }
-        valid = false;
-    }
-
-    if(csapat_nev_value === ''){
-        const parentElement = csapat_nev.parentElement;
-        const errorplace = parentElement.querySelector('.error')
-        if(errorplace){
-            errorplace.innerHTML = ' A csapat neve kötelező'
-        }
-        valid = false;
-    }
-    if(muelem_value === ''){
-        const parentElement = muelem.parentElement;
-        const errorplace = parentElement.querySelector('.error')
-        if(errorplace){
-            errorplace.innerHTML = ' A első műve kötelező'
-        }
-        valid = false;
-    }
-
     //új objektumot létrehozok az adatoknak
     const new_array = {
         Szerzo : Szerzo_nev_value,
@@ -150,8 +135,22 @@ form.addEventListener('submit',function(e){ //submitra irok egy eseménykezelőt
         Muvei : muelem_value,
         muvei2: masodik_value,
     }
+
     array.push(new_array) // hozzáadjuk az új objektumot a meglévő tömbhöz
     rendetrable()//frissitjük a táblázatot az új adatokkal
+    
+}})
 
+function validatefields(inputhtmlElement, errormessage){
+    let valid = true
 
-})
+    if(inputhtmlElement.value === ''){
+        const parentElement = inputhtmlElement.parentElement;
+        const errorhely = parentElement.querySelector('.error');
+        if(errorhely != undefined){
+            errorhely.innerHTML = errormessage;
+        }
+        valid = false;
+    }
+    return valid;
+}
