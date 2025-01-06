@@ -103,14 +103,45 @@ form.addEventListener('submit',function(e){ //submitra irok egy eseménykezelőt
     const csapat_nev = document.getElementById('group')
     const muelem = document.getElementById('mu1')
     const masodik = document.getElementById('mu2')
-    
 
+    const  tform = e.currentTarget
+    const hiba = tform.querySelectorAll('.error')
+    for(const errorElement of hiba){
+        errorElement.innerHTML = ""
+    }
+    
+    let valid = true
     // az adatok értékeit elkérem
     const Szerzo_nev_value = Szerzo_nev.value
     const csapat_nev_value = csapat_nev.value
     const muelem_value = muelem.value
     const masodik_value = masodik.value
-    
+
+    if(Szerzo_nev_value === ''){
+        const parentElement = Szerzo_nev.parentElement;
+        const errorplace = parentElement.querySelector('.error')
+        if(errorplace != undefined){
+            errorplace.innerHTML = ' A szerző neve kötelező'
+        }
+        valid = false;
+    }
+
+    if(csapat_nev_value === ''){
+        const parentElement = csapat_nev.parentElement;
+        const errorplace = parentElement.querySelector('.error')
+        if(errorplace){
+            errorplace.innerHTML = ' A csapat neve kötelező'
+        }
+        valid = false;
+    }
+    if(muelem_value === ''){
+        const parentElement = muelem.parentElement;
+        const errorplace = parentElement.querySelector('.error')
+        if(errorplace){
+            errorplace.innerHTML = ' A első műve kötelező'
+        }
+        valid = false;
+    }
 
     //új objektumot létrehozok az adatoknak
     const new_array = {
