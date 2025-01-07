@@ -36,7 +36,7 @@ table.appendChild(thead) // a thead elemet a table elemhez füzőm
 table.appendChild(tbody) // tbody elemet a tablehöz fűzöm
 
 
-function fejlecgeneralas() {  //ez egy funkcio
+
     const fejelesek = ["Szerző neve", "Csapat", "Művei"]; // fejelesek tömbben tárolom a adatokat
     const fejsor = document.createElement('tr'); //csinálok egy sort és fejsorba eltárolom
     thead.appendChild(fejsor); //theadhez hozzáfüzőm a fejsort
@@ -50,7 +50,7 @@ function fejlecgeneralas() {  //ez egy funkcio
         }
     }
     
-}
+
 
 function rendetrable(){  //függvény bevezetése, nincs parametere
     tbody.innerHTML="" //ne duplikáljuk a táblázatot
@@ -146,4 +146,3 @@ function validatefields(inputhtmlElement, errormessage){ // csinálunk egy függ
     }
     return valid; // visszaterek a valid valtozoval, ami akkor hamis ha nem ment at a validacion
 }
-fejlecgeneralas();
