@@ -1,16 +1,3 @@
-const table = document.createElement('table') // létrehozunk egy table elemet
-const thead = document.createElement('thead')// létrehozunk egy tablehead elemet
-const tbody = document.createElement('tbody')// létrehozunk egy tbody elemet
-document.body.appendChild(table) // table elemet hozzá adjuk a htmlhez
-table.appendChild(thead) // a thead elemet a table elemhez füzőm
-table.appendChild(tbody) // tbody elemet a tablehöz fűzöm
-
-  const array1 =[  {    //tömb 0 eleme                       
-        
-        th1ertek : "Szerző neve",
-        th2ertek : "Csapat",
-        th3ertek : "Művei"
-    }]
 
 const array =[          //Tömbben eltárolom az adatokat
     
@@ -39,23 +26,31 @@ const array =[          //Tömbben eltárolom az adatokat
         muvei2 : "Járkálj csak, halálraítélt"
     },
 ]
-// Fejlécet létrehozom
-const th_row = document.createElement('tr') // Létrehozzuk a fejléc sort
-thead.appendChild(th_row) // A fejléc sort hozzáadjuk a thead-hez
 
-// Fejléc cellák létrehozása és hozzáadása a fejléchez
-const th1 = document.createElement('th')
-th1.innerHTML = array1[0].th1ertek //megadjuk a fejléc tartalmát a tömbböl
-th_row.appendChild(th1)
 
-const th2 = document.createElement('th')
-th2.innerHTML = array1[0].th2ertek //megadjuk a fejléc tartalmát a tömbböl
-th_row.appendChild(th2)
+const table = document.createElement('table') // létrehozunk egy table elemet
+const thead = document.createElement('thead')// létrehozunk egy tablehead elemet
+const tbody = document.createElement('tbody')// létrehozunk egy tbody elemet
+document.body.appendChild(table) // table elemet hozzá adjuk a htmlhez
+table.appendChild(thead) // a thead elemet a table elemhez füzőm
+table.appendChild(tbody) // tbody elemet a tablehöz fűzöm
 
-const th3 = document.createElement('th')
-th3.colSpan = 2 // Az utolsó fejléc cella két cellát von össze
-th3.innerHTML = array1[0].th3ertek //megadjuk a fejléc tartalmát a tömbböl
-th_row.appendChild(th3)
+
+function fejlecgeneralas() {  //ez egy funkcio
+    const fejelesek = ["Szerző neve", "Csapat", "Művei"]; // fejelesek tömbben tárolom a adatokat
+    const fejsor = document.createElement('tr'); //csinálok egy sort és fejsorba eltárolom
+    thead.appendChild(fejsor); //theadhez hozzáfüzőm a fejsort
+    
+    for (let i = 0; i < fejelesek.length; i++) {  //fejlécet generálom
+        const fejcella = document.createElement('th'); // létrehozok egy th t 
+        fejcella.innerHTML = fejelesek[i]; // megadom a fejcella értékét ugy hogy végig fut az i a tömbbön és htmlinnertálásával
+        fejsor.appendChild(fejcella); // majd ezt hozzáfűzöm a fejsorhoz
+        if(i === 2 ){ //ha az i elért a művei elemhez akkor annak a colspanja 2 legyen
+        fejcella.colSpan = 2
+        }
+    }
+    
+}
 
 function rendetrable(){  //függvény bevezetése, nincs parametere
     tbody.innerHTML="" //ne duplikáljuk a táblázatot
@@ -151,3 +146,4 @@ function validatefields(inputhtmlElement, errormessage){ // csinálunk egy függ
     }
     return valid; // visszaterek a valid valtozoval, ami akkor hamis ha nem ment at a validacion
 }
+fejlecgeneralas();
