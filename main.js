@@ -91,9 +91,6 @@ function rendetrable(){  //függvény bevezetése, nincs parametere
     }
 }
 rendetrable() // meghivom a fuggvenyemet
-
-
-
 const form = document.getElementById('form'); //letrehozok egy formot es annak elkerem azt a htmlelemntjét ami form id-val rendelkezik
 
 form.addEventListener('submit',function(e){ //submitra irok egy eseménykezelőt
@@ -109,6 +106,7 @@ form.addEventListener('submit',function(e){ //submitra irok egy eseménykezelőt
     for(const errorElement of hiba){
         errorElement.innerHTML = ""
     }
+
     if(simplevalidacio(Szerzo_nev, csapat_nev,muelem,masodik)){ // ha minden mező megvan adva akkor
     // akkor eltároljuk az értékeket egy valtozoba
     const Szerzo_nev_value = Szerzo_nev.value
@@ -124,10 +122,8 @@ form.addEventListener('submit',function(e){ //submitra irok egy eseménykezelőt
     }
 
     array.push(ujobjektum) // hozzáadjuk az új objektumot a meglévő tömbhöz
-    rendetrable()//frissitjük a táblázatot az új adatokkal
-    
+    rendetrable()//frissitjük a táblázatot az új adatokkal 
 }})
-
 function simplevalidacio(szerzo_input,csapatnev_input,muelem_input){
     let valid = true // validáció alap értéke
     if(!validatefields(szerzo_input, "A szerző neve kötelező")){//validáljuk a szerző neve mezőt, ha hamisan tér vissza akkor
@@ -142,7 +138,6 @@ function simplevalidacio(szerzo_input,csapatnev_input,muelem_input){
     }
     return valid; // visszaterek a valid valtozo ertekevel
 }
-
 function validatefields(inputhtmlElement, errormessage){ // csinálunk egy függvényt
     let valid = true // definiáljuk a valid értékét
 
