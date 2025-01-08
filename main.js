@@ -41,14 +41,17 @@ function fejlecgeneralas() {  //ez egy funkcio
     const fejsor = document.createElement('tr'); //csinálok egy sort és fejsorba eltárolom
     thead.appendChild(fejsor); //theadhez hozzáfüzőm a fejsort
     
-    for (const futasok of fejelesek) {  //létrehozok egy elemet ami végig fut a fejelesek tombön
+    for (const futasok of fejelesek) {  //vegigmegyunk a tombon egy ciklus segitsegevel, es a ciklusvaltozo az aktualis elem
         const fejcella = document.createElement('th'); // létrehozok egy th t 
         fejcella.innerHTML = futasok; // megadom a fejcella értékét ugy hogy végig fut az i a tömbbön és htmlinnertálásával
         fejsor.appendChild(fejcella); // majd ezt hozzáfűzöm a fejsorhoz
-        if(futasok === "Művei"){ //hogyha a futasok elem elér a Művei elemhez akkor az legyen colspan 2
+        
+        if(futasok === "Művei")//hogyha a futasok elem elér a Művei elemhez akkor az legyen colspan 2
+        { 
             fejcella.colSpan = 2
         }
     } 
+    
 }
 
 function rendetrable(){  //függvény bevezetése, nincs parametere
