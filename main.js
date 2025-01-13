@@ -38,7 +38,9 @@ table.appendChild(tbody) // tbody elemet a tablehöz fűzöm
 
 
 
-
+/**
+ * egy ciklussal megcsinálom a fejlécemet 
+ */
 function fejlecgeneralas() {  //ez egy funkcio
     const fejelesek = ["Szerző neve", "Csapat", "Művei"]; // fejelesek tömbben tárolom a adatokat
     const fejsor = document.createElement('tr'); //csinálok egy sort és fejsorba eltárolom
@@ -56,6 +58,9 @@ function fejlecgeneralas() {  //ez egy funkcio
     } 
     
 }
+/**
+ * ciklussal megcsinálom a függvényemet
+ */
 function rendetrable(){  //függvény bevezetése, nincs parametere
     tbody.innerHTML="" //ne duplikáljuk a táblázatot
     for (const futo of array) {
@@ -89,6 +94,9 @@ function rendetrable(){  //függvény bevezetése, nincs parametere
 
     }
 }
+/**
+ * legenerálom lineárisan a formomat
+ */
 function generateform(){ //létrehozok egy függvényt
 const form1 = document.createElement('form') // létrehozok egy form html elemet
 form1.id = 'form' // megadom az idját
@@ -244,6 +252,14 @@ form.addEventListener('submit',function(e){ //submitra irok egy eseménykezelőt
     form.reset() // a formomat resetelem hogy ne tudjam spammelni a hozzáadást
     rendetrable()//frissitjük a táblázatot az új adatokkal 
 }})
+
+/**
+ * ellenörzi az adatokat ha nincsenek megadva bekéri hogy adjad meg
+ * @param {*} szerzo_input 
+ * @param {*} csapatnev_input 
+ * @param {*} muelem_input 
+ * @returns 
+ */
 function simplevalidacio(szerzo_input,csapatnev_input,muelem_input){
     let valid = true // validáció alap értéke
     if(!validatefields(szerzo_input, "A szerző neve kötelező")){//validáljuk a szerző neve mezőt, ha hamisan tér vissza akkor
@@ -258,6 +274,12 @@ function simplevalidacio(szerzo_input,csapatnev_input,muelem_input){
     }
     return valid; // visszaterek a valid valtozo ertekevel
 }
+/**
+ * ha üres az értékem akkor rátesz egy error class és beirjuk a hiba uzit
+ * @param {*} inputhtmlElement 
+ * @param {*} errormessage 
+ * @returns 
+ */
 function validatefields(inputhtmlElement, errormessage){ // csinálunk egy függvényt
     let valid = true // definiáljuk a valid értékét
 
