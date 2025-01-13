@@ -1,4 +1,3 @@
-
 const array =[          //Tömbben eltárolom az adatokat
     
     {    //tömb első eleme
@@ -31,9 +30,13 @@ const array =[          //Tömbben eltárolom az adatokat
 const table = document.createElement('table') // létrehozunk egy table elemet
 const thead = document.createElement('thead')// létrehozunk egy tablehead elemet
 const tbody = document.createElement('tbody')// létrehozunk egy tbody elemet
+
+
 document.body.appendChild(table) // table elemet hozzá adjuk a htmlhez
 table.appendChild(thead) // a thead elemet a table elemhez füzőm
 table.appendChild(tbody) // tbody elemet a tablehöz fűzöm
+
+
 
 
 function fejlecgeneralas() {  //ez egy funkcio
@@ -53,7 +56,6 @@ function fejlecgeneralas() {  //ez egy funkcio
     } 
     
 }
-
 function rendetrable(){  //függvény bevezetése, nincs parametere
     tbody.innerHTML="" //ne duplikáljuk a táblázatot
     for (const futo of array) {
@@ -87,6 +89,127 @@ function rendetrable(){  //függvény bevezetése, nincs parametere
 
     }
 }
+function generateform(){
+const form1 = document.createElement('form')
+form1.id = 'form'
+document.body.appendChild(form1)
+
+const div1 = document.createElement('div')
+div1.classList.add('field')
+
+const label1 = document.createElement('label')
+label1.htmlFor = "szerzo_nev"
+label1.innerText = "Szerző neve:"
+div1.appendChild(label1)
+
+
+const input = document.createElement('input')
+input.type = 'text'
+input.id = 'szerzo_nev'
+input.name = 'szerzo_nev'
+div1.appendChild(input)
+
+
+const span_error = document.createElement('span')
+span_error.classList.add('error')
+div1.appendChild(span_error)
+
+const div2 = document.createElement('div')
+div2.classList.add('field')
+
+const label2 = document.createElement('label')
+label2.htmlFor = "group"
+label2.innerText = "Csapat"
+div2.appendChild(label2)
+
+
+const input1 = document.createElement('input')
+input1.type = 'text'
+input1.id = 'group'
+input1.name = 'group'
+div2.appendChild(input1)
+
+
+const span_error1 = document.createElement('span')
+span_error1.classList.add('error')
+div2.appendChild(span_error1)
+
+
+const div3 = document.createElement('div')
+div3.classList.add('field')
+
+const label3 = document.createElement('label')
+label3.htmlFor = "mu1"
+label3.innerText = "Elso mű: "
+div3.appendChild(label3)
+
+
+const input2 = document.createElement('input')
+input2.type = 'text'
+input2.id = 'mu1'
+input2.name = 'mu1'
+div3.appendChild(input2)
+
+
+const span_error2 = document.createElement('span')
+span_error2.classList.add('error')
+div3.appendChild(span_error2)
+
+
+const div4 = document.createElement('div')
+div4.classList.add('field')
+
+const label4 = document.createElement('label')
+label4.htmlFor = "masodik"
+label4.innerText = "Szeretnél megadni második művet is?"
+div4.appendChild(label4)
+
+
+const input3 = document.createElement('input')
+input3.type = 'text'
+input3.name = "masodik"
+input3.id = 'masodik'
+input3.type = 'checkbox'
+div4.appendChild(input3)
+
+
+
+const div5 = document.createElement('div')
+div5.classList.add('field')
+
+const label5 = document.createElement('label')
+label5.htmlFor = "mu2"
+label5.innerText = "Második mű: "
+div5.appendChild(label5)
+
+
+const input4 = document.createElement('input')
+input4.type = 'text'
+input4.id = 'mu2'
+input4.name = 'mu2'
+div5.appendChild(input4)
+
+
+const span_error3 = document.createElement('span')
+span_error3.classList.add('error')
+div5.appendChild(span_error3)
+
+const button = document.createElement('button')
+button.type = 'submit'
+button.innerText = 'Hozzáadás'
+
+
+form1.appendChild(div1)
+form1.appendChild(div2)
+form1.appendChild(div3)
+form1.appendChild(div4)
+form1.appendChild(div5)
+form1.appendChild(button)
+
+
+
+}
+generateform()
 rendetrable() // meghivom a fuggvenyemet
 const form = document.getElementById('form'); //letrehozok egy formot es annak elkerem azt a htmlelemntjét ami form id-val rendelkezik
 
@@ -148,4 +271,20 @@ function validatefields(inputhtmlElement, errormessage){ // csinálunk egy függ
     }
     return valid; // visszaterek a valid valtozoval, ami akkor hamis ha nem ment at a validacion
 }
+
+
 fejlecgeneralas();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
