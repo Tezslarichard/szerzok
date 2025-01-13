@@ -71,6 +71,7 @@ form.addEventListener('submit',function(e){ //submitra irok egy eseménykezelőt
 
     array.push(ujobjektum)// hozzáadjuk az új objektumot a meglévő tömbhöz
     form.reset() // a formomat resetelem hogy ne tudjam spammelni a hozzáadást
+    tbody.innerHTML="" //ne duplikáljuk a táblázatot
     rendetrable()//frissitjük a táblázatot az új adatokkal 
 }})
 

@@ -21,9 +21,10 @@ function fejlecgeneralas() {  //ez egy funkcio
 
 /**
  * ciklussal megcsinálom a függvényemet
+ * @param {array} array
  */
 function rendetrable(){  //függvény bevezetése, nincs parametere
-    tbody.innerHTML="" //ne duplikáljuk a táblázatot
+    
     for (const futo of array) {
         
         const table_row = document.createElement('tr') // Létrehozzuk az új sort
@@ -182,9 +183,9 @@ function generateform(){ //létrehozok egy függvényt
 
     /**
  * ellenörzi az adatokat ha nincsenek megadva bekéri hogy adjad meg
- * @param {*} szerzo_input 
- * @param {*} csapatnev_input 
- * @param {*} muelem_input 
+ * @param {HTMLElement} szerzo_input 
+ * @param {HTMLElement} csapatnev_input 
+ * @param {HTMLElement} muelem_input 
  * @returns 
  */
 function simplevalidacio(szerzo_input,csapatnev_input,muelem_input){
@@ -203,9 +204,9 @@ function simplevalidacio(szerzo_input,csapatnev_input,muelem_input){
 }
 /**
  * ha üres az értékem akkor rátesz egy error class és beirjuk a hiba uzit
- * @param {*} inputhtmlElement 
- * @param {*} errormessage 
- * @returns 
+ * @param {HTMLElement} inputhtmlElement 
+ * @param {string} errormessage 
+ * @returns {boolean}
  */
 function validatefields(inputhtmlElement, errormessage){ // csinálunk egy függvényt
     let valid = true // definiáljuk a valid értékét
