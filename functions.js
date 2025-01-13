@@ -1,5 +1,6 @@
 /**
- * egy ciklussal megcsinálom a fejlécemet 
+ * ez a függvény végig fut a kistömbön ami emgtalálható benne csinál egy új sort ami a fejléc sorom lesz
+ *  és minden adatnál új cellába rakja ezeket és ha elér a művei adathoz elér akkor egyesit 2 cellát
  */
 function fejlecgeneralas() {  //ez egy funkcio
     const fejelesek = ["Szerző neve", "Csapat", "Művei"]; // fejelesek tömbben tárolom a adatokat
@@ -20,10 +21,11 @@ function fejlecgeneralas() {  //ez egy funkcio
 }
 
 /**
- * ciklussal megcsinálom a függvényemet
- * @param {array} array
+ * függvényem végigmegy a tömbömön és mindegyik új elemnél csinál egy sort és minden
+ * adatnál csinál egy ceellát amit eltárol abba és hogyha nincsen második mű akkor a cellákat egyesíti
+ * @param {Array} array
  */
-function rendetrable(){  //függvény bevezetése, nincs parametere
+function rendetrable(array){  //függvény bevezetése, nincs parametere
     
     for (const futo of array) {
         
@@ -59,7 +61,8 @@ function rendetrable(){  //függvény bevezetése, nincs parametere
 
 
 /**
- * legenerálom lineárisan a formomat
+ * ezzel a függvénnyel egyessével generálom a formban lévő elemeket a divet a label a spant az inputot
+ * megadom az idjukat for jukat name tagjuket és a típusait majd ezt hozzá adom a meglévo divhez amibe irtam
  */
 function generateform(){ //létrehozok egy függvényt
     const form1 = document.createElement('form') // létrehozok egy form html elemet
@@ -181,8 +184,9 @@ function generateform(){ //létrehozok egy függvényt
     
     }
 
-    /**
- * ellenörzi az adatokat ha nincsenek megadva bekéri hogy adjad meg
+/**
+ * Ez a függvény arra szolgál hogy a három mezo a szero_input,csapatnev_input,
+ * muelem_input ki van-e töltve, és ha nincsen kitöltve akkor hibaüzenetet ír
  * @param {HTMLElement} szerzo_input 
  * @param {HTMLElement} csapatnev_input 
  * @param {HTMLElement} muelem_input 
@@ -203,7 +207,8 @@ function simplevalidacio(szerzo_input,csapatnev_input,muelem_input){
     return valid; // visszaterek a valid valtozo ertekevel
 }
 /**
- * ha üres az értékem akkor rátesz egy error class és beirjuk a hiba uzit
+ * ez a függvény ellenörzi hogy az inputhtmlelement üres e. Ha üres, akkor jelzi egy hibaüzenettel és rárak egy error classt
+ * majd visszaad egy boolean értéket ami azt jelenti hogy trueval vagy falseal tér vissza
  * @param {HTMLElement} inputhtmlElement 
  * @param {string} errormessage 
  * @returns {boolean}

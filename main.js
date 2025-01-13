@@ -38,7 +38,7 @@ table.appendChild(tbody) // tbody elemet a tablehöz fűzöm
 
 
 generateform()//meghivom a függvényt
-rendetrable() // meghivom a fuggvenyemet
+rendetrable(array) // meghivom a fuggvenyemet
 const form = document.getElementById('form'); //letrehozok egy formot es annak elkerem azt a htmlelemntjét ami form id-val rendelkezik
 
 form.addEventListener('submit',function(e){ //submitra irok egy eseménykezelőt
@@ -72,7 +72,7 @@ form.addEventListener('submit',function(e){ //submitra irok egy eseménykezelőt
     array.push(ujobjektum)// hozzáadjuk az új objektumot a meglévő tömbhöz
     form.reset() // a formomat resetelem hogy ne tudjam spammelni a hozzáadást
     tbody.innerHTML="" //ne duplikáljuk a táblázatot
-    rendetrable()//frissitjük a táblázatot az új adatokkal 
+    rendetrable(array)//frissitjük a táblázatot az új adatokkal 
 }})
 
 fejlecgeneralas();
