@@ -77,8 +77,29 @@ form.addEventListener('submit',function(e){ //submitra irok egy eseménykezelőt
     for(const errorElement of hiba){
         errorElement.innerHTML = ""
     }
+    let hibakod = true
 
-    if(simplevalidacio(Szerzo_nev, csapat_nev,muelem,masodik)){ // ha minden mező megvan adva akkor
+    if(!validatefields(Szerzo_nev,'Szerző neve nem lehet üres')){ //meghivom a függvényt és megadom az értékeket
+        hibakod = false
+    }
+    if(!validatefields(csapat_nev,'Csapat neve nem lehet üres')){ //meghivom a függvényt és megadom az értékeket
+        hibakod = false
+    }
+    if(!validatefields(muelem,'Művek nem lehet üres')){ //meghivom a függvényt és megadom az értékeket
+        hibakod = false
+    }
+
+    if(masodik.value !== "" , muelem.value === ""){
+        if(!validatefields(muelem,'Művek nem lehet üres')){
+            hibakod = false
+        }
+        if(!validatefields(masodik,'Művek nem lehet üres')){
+            hibakod = false
+        }
+    }
+
+
+    if(hibakod){ // ha minden mező megvan adva akkor
     // akkor eltároljuk az értékeket egy valtozoba
     const Szerzo_nev_value = Szerzo_nev.value
     const csapat_nev_value = csapat_nev.value

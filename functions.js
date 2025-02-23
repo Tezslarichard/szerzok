@@ -116,20 +116,6 @@ function generateform(tablazat){ //létrehozok egy függvényt
  * @param {HTMLElement} muelem_input 
  * @returns 
  */
-function simplevalidacio(szerzo_input,csapatnev_input,muelem_input){
-    let valid = true // validáció alap értéke
-    if(!validatefields(szerzo_input, "A szerző neve kötelező")){//validáljuk a szerző neve mezőt, ha hamisan tér vissza akkor
-        valid = false; // a valid változo értékét hamisra allitjuk
-    }
-
-    if(!validatefields(csapatnev_input, "A csapatot kötelező megadni")){//validáljuk a csapat neve  mezőt, ha hamissal tér vissza
-        valid = false; // valid valtozo erteke hamissa allitjuk
-    }
-    if(!validatefields(muelem_input, "A műnek a  neve kötelező")){ //validáljuk a a mű  mezőt, ha hamissal ter vissza
-        valid = false; // valid valtozo erteket hamisra allitjuk
-    }
-    return valid; // visszaterek a valid valtozo ertekevel
-}
 /**
  * ez a függvény ellenörzi hogy az inputhtmlelement üres e. Ha üres, akkor jelzi egy hibaüzenettel és rárak egy error classt
  * majd visszaad egy boolean értéket ami azt jelenti hogy trueval vagy falseal tér vissza
