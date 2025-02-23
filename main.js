@@ -26,6 +26,29 @@ const array =[          //Tömbben eltárolom az adatokat
     },
 ]
 
+const tablazat = [
+    {
+        htmlfor : "szerzo_nev",
+        text : "Szerző",
+        inputType : "text"
+    },
+
+    {
+        htmlfor : "group",
+        text : "Csapat",
+        inputType : "text"
+    },
+    {
+        htmlfor : "mu1",
+        text : "Művek",
+        inputType : "text"
+    },
+    {
+        htmlfor : "mu2",
+        text : "Művek",
+        inputType : "text"
+    }
+]
 
 const table = document.createElement('table') // létrehozunk egy table elemet
 const thead = document.createElement('thead')// létrehozunk egy tablehead elemet
@@ -37,8 +60,8 @@ table.appendChild(thead) // a thead elemet a table elemhez füzőm
 table.appendChild(tbody) // tbody elemet a tablehöz fűzöm
 
 
-generateform()//meghivom a függvényt
-rendetrable(array) // meghivom a fuggvenyemet
+generateform(tablazat)//meghivom a függvényt
+rendetrable(array,tbody) // meghivom a fuggvenyemet
 const form = document.getElementById('form'); //letrehozok egy formot es annak elkerem azt a htmlelemntjét ami form id-val rendelkezik
 
 form.addEventListener('submit',function(e){ //submitra irok egy eseménykezelőt
@@ -72,10 +95,10 @@ form.addEventListener('submit',function(e){ //submitra irok egy eseménykezelőt
     array.push(ujobjektum)// hozzáadjuk az új objektumot a meglévő tömbhöz
     form.reset() // a formomat resetelem hogy ne tudjam spammelni a hozzáadást
     tbody.innerHTML="" //ne duplikáljuk a táblázatot
-    rendetrable(array)//frissitjük a táblázatot az új adatokkal 
+    rendetrable(array,tbody)//frissitjük a táblázatot az új adatokkal 
 }})
 
-fejlecgeneralas();
+fejlecgeneralas(thead);
 
 
 

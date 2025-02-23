@@ -2,7 +2,7 @@
  * ez a függvény végig fut a kistömbön ami emgtalálható benne csinál egy új sort ami a fejléc sorom lesz
  *  és minden adatnál új cellába rakja ezeket és ha elér a művei adathoz elér akkor egyesit 2 cellát
  */
-function fejlecgeneralas() {  //ez egy funkcio
+function fejlecgeneralas(thead) {  //ez egy funkcio
     const fejelesek = ["Szerző neve", "Csapat", "Művei"]; // fejelesek tömbben tárolom a adatokat
     const fejsor = document.createElement('tr'); //csinálok egy sort és fejsorba eltárolom
     thead.appendChild(fejsor); //theadhez hozzáfüzőm a fejsort
@@ -25,7 +25,7 @@ function fejlecgeneralas() {  //ez egy funkcio
  * adatnál csinál egy ceellát amit eltárol abba és hogyha nincsen második mű akkor a cellákat egyesíti
  * @param {Array} array
  */
-function rendetrable(array){  //függvény bevezetése, nincs parametere
+function rendetrable(array,tbody){  //függvény bevezetése, nincs parametere
     
     for (const futo of array) {
         
@@ -61,126 +61,50 @@ function rendetrable(array){  //függvény bevezetése, nincs parametere
 
 
 /**
+ * 
+ * @param {Array} tablazat 
  * ezzel a függvénnyel egyessével generálom a formban lévő elemeket a divet a label a spant az inputot
  * megadom az idjukat for jukat name tagjuket és a típusait majd ezt hozzá adom a meglévo divhez amibe irtam
  */
-function generateform(){ //létrehozok egy függvényt
+function generateform(tablazat){ //létrehozok egy függvényt
     const form1 = document.createElement('form') // létrehozok egy form html elemet
     form1.id = 'form' // megadom az idját
     document.body.appendChild(form1) // hozzáfűzöm a html törzséhez
     
-    const div1 = document.createElement('div') //létrehozok egy divet
-    div1.classList.add('field') //adok neki egy classt
-    
-    const label1 = document.createElement('label') //létrehozok egy labelt
-    label1.htmlFor = "szerzo_nev" // megadom a forját
-    label1.innerText = "Szerző neve:" //és az innertextjét
-    div1.appendChild(label1) // hozzáfűzöm a divhez
-    
-    
-    const input = document.createElement('input') //létrehozok egy inputot
-    input.type = 'text' //megadom a típusát hogy text
-    input.id = 'szerzo_nev' // az idját is megadom
-    input.name = 'szerzo_nev' // és a name et is megadom
-    div1.appendChild(input) // ezt hozzáadom a divemhez
-    
-    
-    const span_error = document.createElement('span') //csinálok egy spant
-    span_error.classList.add('error') //rárakok egy error classt
-    div1.appendChild(span_error) //és hozzáadom a divemhez
-    
-    const div2 = document.createElement('div') //létrehozok egy divet
-    div2.classList.add('field')//adok neki egy classt
-    
-    const label2 = document.createElement('label')//létrehozok egy labelt
-    label2.htmlFor = "group"// megadom a forját
-    label2.innerText = "Csapat"//és az innertextjét
-    div2.appendChild(label2)// hozzáfűzöm a divhez
-    
-    
-    const input1 = document.createElement('input')//létrehozok egy inputot
-    input1.type = 'text'//megadom a típusát hogy text
-    input1.id = 'group'// az idját is megadom
-    input1.name = 'group'// és a name et is megadom
-    div2.appendChild(input1)// ezt hozzáadom a divemhez
-    
-    
-    const span_error1 = document.createElement('span')//csinálok egy spant
-    span_error1.classList.add('error')//rárakok egy error classt
-    div2.appendChild(span_error1)//és hozzáadom a divemhez
-    
-    
-    const div3 = document.createElement('div')//létrehozok egy divet
-    div3.classList.add('field')//adok neki egy classt
-    
-    const label3 = document.createElement('label')//létrehozok egy labelt
-    label3.htmlFor = "mu1"// megadom a forját
-    label3.innerText = "Elso mű: "//és az innertextjét
-    div3.appendChild(label3)// hozzáfűzöm a divhez
-    
-    
-    const input2 = document.createElement('input')//létrehozok egy inputot
-    input2.type = 'text'//megadom a típusát hogy text
-    input2.id = 'mu1'// az idját is megadom
-    input2.name = 'mu1'// és a name et is megadom
-    div3.appendChild(input2)// ezt hozzáadom a divemhez
-    
-    
-    const span_error2 = document.createElement('span')//csinálok egy spant
-    span_error2.classList.add('error')//rárakok egy error classt
-    div3.appendChild(span_error2)//és hozzáadom a divemhez
-    
-    
-    const div4 = document.createElement('div')//létrehozok egy divet
-    div4.classList.add('field')//adok neki egy classt
-    
-    const label4 = document.createElement('label')//létrehozok egy labelt
-    label4.htmlFor = "masodik"// megadom a forját
-    label4.innerText = "Szeretnél megadni második művet is?"//és az innertextjét
-    div4.appendChild(label4)// hozzáfűzöm a divhez
-    
-    
-    const input3 = document.createElement('input')//létrehozok egy inputot
-    input3.name = "masodik"// és a name et is megadom
-    input3.id = 'masodik'// az idját is megadom
-    input3.type = 'checkbox' //megadom a típusát hogy checkbox
-    div4.appendChild(input3) //hozzáfűzöm a divemhez
-    
-    
-    
-    const div5 = document.createElement('div')//létrehozok egy divet
-    div5.classList.add('field')//adok neki egy classt
-    
-    const label5 = document.createElement('label')//létrehozok egy labelt
-    label5.htmlFor = "mu2"// megadom a forját
-    label5.innerText = "Második mű: "//és az innertextjét
-    div5.appendChild(label5)// hozzáfűzöm a divhez
-    
-    
-    const input4 = document.createElement('input')//létrehozok egy inputot
-    input4.type = 'text'//megadom a típusát hogy text
-    input4.id = 'mu2'// az idját is megadom
-    input4.name = 'mu2'// és a name et is megadom
-    div5.appendChild(input4)//hozzáfűzöm a divemhez
-    
-    
-    const span_error3 = document.createElement('span') //csinálok egy spant
-    span_error3.classList.add('error') //adok neki egy error classt
-    div5.appendChild(span_error3) //hozzáfűzöm a divemhez
-    
+    for (const elem of tablazat) { //végigmegyek a formelemeken egy ciklussal
+        
+        const div = document.createElement('div') //létrehozok egy divet
+        div.classList.add('field') //hozzáadok egy classt a divhez
+        form1.appendChild(div) //hozzáadom a formhoz
+
+        const label = document.createElement('label') //létrehozok egy labelt
+        label.htmlFor = elem.htmlfor //megadom az idját
+        label.innerHTML = elem.text //megadom a szövegét
+        div.appendChild(label) //hozzáadom a divhez
+
+
+        const input = document.createElement('input') //létrehozok egy inputot
+        input.id = elem.htmlfor //megadom az idját
+        input.name = elem.htmlfor //megadom a name tagját
+        input.type = elem.inputType //megadom a típusát
+        div.appendChild(input) //hozzáadom a divhez
+
+
+        const span = document.createElement('span') //létrehozok egy spant
+        span.classList.add('error') //hozzáadok egy classt
+        div.appendChild(span) //hozzáadom a divhez
+
+        const br1 = document.createElement('br') //létrehozok egy br-t
+        label.appendChild(br1) //hozzáadom a divhez
+
+        const br2 = document.createElement('br') //létrehozok egy br-t
+        label.appendChild(br2) //hozzáadom a divhez
+
+    }
     const button = document.createElement('button') //csinálok egy gombot
     button.type = 'submit' //megadom hogy mi a típusa
     button.innerText = 'Hozzáadás' //és az innertextjét is megadom
-    
-    
-    form1.appendChild(div1) //a divjeimet hozzáadom a formomhoz
-    form1.appendChild(div2)//a divjeimet hozzáadom a formomhoz
-    form1.appendChild(div3)//a divjeimet hozzáadom a formomhoz
-    form1.appendChild(div4)//a divjeimet hozzáadom a formomhoz
-    form1.appendChild(div5)//a divjeimet hozzáadom a formomhoz
-    form1.appendChild(button)// a gombot is hozzáadom a formomhoz
-    
-    
+    form1.appendChild(button) //hozzáadom a formhoz
     
     }
 
